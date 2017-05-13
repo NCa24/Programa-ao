@@ -2,7 +2,9 @@
 #include "Line.h"
 #include <sstream>
 
+vector <Line> LinhasExistentes //vector que contem todas as linhas
 
+//Line temporario; //objecto que depois entra em LinhasExistentes
 
 Line::Line(string textLine){
 	size_t found = textLine.find(";");
@@ -17,7 +19,9 @@ Line::Line(string textLine){
 	stringstream convert(ID);
 	convert >> id;
 	int aux;
-
+	busStopList.clear(); //limpar antes de começar a escrever
+	timesList.clear(); //construtor para todas as linhas
+	tempo_viagem.clear();
 	while (found4 <= found3) //armazenar paragens
 	{
 		busStopList.push_back(textLine.substr(found2 + 2, found4 - found2 - 2));
@@ -43,10 +47,26 @@ Line::Line(string textLine){
 		}
 	}
 
-  // INITIALISATION CODE GOES IN HERE
-  
+	//store tempo entre paragens associado as respectivas paragens
 
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		while (i < (busStopList - 1))
+		{
+			tempo_viagem[k].first.first = busStopList[i];
+			tempo_viagem[k].first.second = busStopList[i + 1];
+			tempo_viagem[k].second = armazena_temp_tempos[j];
+			temp.tempo_viagem.push_back(temp3);
+			i++;
+			j++;
+			k++;
+		}
+	LinhasExistentes.push_back(Line); //LINHA ENTRA NO VECTOR
+	return 1;
 }
+
+	// INITIALISATION CODE GOES IN HERE
 
 ////////////////
 // get methods
@@ -71,13 +91,43 @@ vector<int> Line::getTimings() const{
 
 //SET METHODS
 
-int changeID()
+int Line::changeID(int new_ID)
 {
-	while (i < .size())
+	id = new_ID;
+	return 1;
+}
+
+int Line::changeFreq(int new_freq)
+{
+	freq = new_freq;
+	return 1;
+}
+
+int Line::changeBusStop(string to_change, string new_bus_stop)
+{
+	while (int i= 0 < busStopList)
 	{
-		if (alterar == linhas[i].ID)
-			linhas[i].ID = introduzir;
-		i++;
+		if (busStopList[i] == to_change)
+		{
+			busStopList[i] == new_bus_stop;
+			break;
+		}
 	}
 	return 1;
 }
+
+int Line::changeTime(string parag1, string parag2, int new_time)
+{
+	int j = 0;
+		while (j < timesList())
+		{
+			if ((timesList[j].first.first == parag1 && timesList[j].first.second == parag2) || (timesList[j].first.first == parag2 && timesList[j].first.second == parag1))
+				{
+				timesList[j].second = new_time;
+				break;
+				}
+			j++;
+		}
+		return 1;
+}
+
