@@ -16,7 +16,8 @@ class Driver{
   unsigned int maxHours;        // maximum duration of a shift
   unsigned int maxWeekWorkingTime;  // maximum number of hours of work in a week
   unsigned int minRestTime;     // minimum number of rest hours between shifts
-  vector<Shift> shifts;         // assigned shifts
+  // assigned shifts in Company.h
+
  public:
   // get methods
   unsigned int getId() const;

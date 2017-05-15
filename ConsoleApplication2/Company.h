@@ -7,6 +7,7 @@
 
 #include "Line.h"
 #include "Driver.h"
+#include "Shift.h"
 
 
 using namespace std;
@@ -16,6 +17,8 @@ class Empresa{
   string nome;
   vector<Driver> condutores;
   vector<Line> linhas;
+  vector<Shift> shifts;
+
  public:
 	 int get_line_driver(string nome, string fichCondutores, string fichLinhas);
   // metodos get
