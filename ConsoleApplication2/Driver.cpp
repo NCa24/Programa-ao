@@ -53,20 +53,25 @@ vector<Shift> Driver::getShifts() const{
 int Driver::change_ID(int new_ID)
 {
 	driver1.id = new_ID;
+	return 1;
 }
 int Driver::change_name(string new_name)
 {
 	driver1.name = new_name;
+	return 1;
 }
 int Driver::change_maxHours(int max_Hours)
 {
-	driver1.maxHours = max_Hours
+	driver1.maxHours = max_Hours;
+	return 1;
 }
 int Driver::change_maxWeekWorkingTime(int maxWeekWorkingTime)
 {
 	driver1.maxWeekWorkingTime = maxWeekWorkingTime;
+	return 1;
 }
 int Driver::change_minRestTime(int minRestTime)
 {
 	driver1.minRestTime = minRestTime;
+	return 1;
 }
