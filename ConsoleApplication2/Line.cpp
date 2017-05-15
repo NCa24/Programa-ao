@@ -1,12 +1,17 @@
 #include "stdafx.h"
 #include "Line.h"
 #include <sstream>
+#include <utility>
+
+using namespace std;
 
 vector <Line> LinhasExistentes //vector que contem todas as linhas
 
 //Line temporario; //objecto que depois entra em LinhasExistentes
 
-Line::Line(string textLine){
+Line Linha
+
+int iterative_Line(string textLine){
 	size_t found = textLine.find(";");
 	size_t found2 = textLine.find(";", found + 1);
 	size_t found3 = textLine.find(";", found2 + 1);
@@ -15,16 +20,16 @@ Line::Line(string textLine){
 	string ID = textLine.substr(0, found - 1);
 	string FREQ = textLine.substr(found + 2, found2 - found - 3);
 	stringstream convert(FREQ);
-	convert >> freq;
+	convert >> Linha.freq;
 	stringstream convert(ID);
-	convert >> id;
+	convert >> Linha.id;
 	int aux;
-	busStopList.clear(); //limpar antes de começar a escrever
-	timesList.clear(); //construtor para todas as linhas
-	tempo_viagem.clear();
+	Linha.busStopList.clear(); //limpar antes de começar a escrever
+	Linha.timesList.clear(); //construtor para todas as linhas
+	Linha.tempo_viagem.clear();
 	while (found4 <= found3) //armazenar paragens
 	{
-		busStopList.push_back(textLine.substr(found2 + 2, found4 - found2 - 2));
+		Linha.busStopList.push_back(textLine.substr(found2 + 2, found4 - found2 - 2));
 		found2 = found4;
 		found4 = textLine.find_first_of(",;", found4 + 1);
 	}
@@ -35,13 +40,13 @@ Line::Line(string textLine){
 		{
 			stringstream convert(textLine.substr(found3 + 2, textLine.size() - 1 - found3 - 2));
 			convert >> aux;
-			timesList.push_back(aux);
+			Linha.timesList.push_back(aux);
 		}
 		else
 		{
 			stringstream convert (textLine.substr(found3 + 2, found5 - found3 - 2));
 			convert >> aux;
-			timesList.push_back(aux);
+			Linha.timesList.push_back(aux);
 			found3 = found5;
 			found5 = textLine.find(",", found5 + 1);
 		}
@@ -54,10 +59,9 @@ Line::Line(string textLine){
 		int k = 0;
 		while (i < (busStopList - 1))
 		{
-			tempo_viagem[k].first.first = busStopList[i];
-			tempo_viagem[k].first.second = busStopList[i + 1];
-			tempo_viagem[k].second = armazena_temp_tempos[j];
-			temp.tempo_viagem.push_back(temp3);
+			Linha.tempo_viagem[k].first.first = busStopList[i];
+			Linha.tempo_viagem[k].first.second = busStopList[i + 1];
+			Linha.tempo_viagem[k].second = timesList[j];
 			i++;
 			j++;
 			k++;

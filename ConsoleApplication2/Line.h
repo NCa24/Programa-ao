@@ -14,9 +14,9 @@ class Line{
   unsigned int freq;
   vector<string> busStopList;
   vector<int> timesList;
-  vector <pair<pair<string, string>, string>> tempo_viagem;
+  vector <pair<pair<string, string>, int>> tempo_viagem;
  public:
-  Line(string textLine);
+  int iterative_Line(string textLine);
   // metodos get
   unsigned int getFreq() const;
   unsigned int getId() const;
