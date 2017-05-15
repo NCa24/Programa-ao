@@ -1,10 +1,28 @@
 #include "stdafx.h"
 #include "Driver.h"
+#include <sstream>
 
-Driver::Driver(string textLine){
+Driver driver1;
 
-  // INITIALISATION CODE GOES IN HERE
-  
+int Driver::split_driver(string textLine)
+{
+	size_t found = textLine.find(";");
+	size_t found2 = textLine.find(";", found + 1);
+	size_t found3 = textLine.find(";", found2 + 1);
+	size_t found4 = textLine.find(";", found3 + 1);
+	string ID = textLine.substr(0, found - 1);
+	stringstream convert(ID);
+	convert >> driver1.id;
+	driver1.name = textLine.substr(found + 2, found2 - found - 3);
+	string maxHours = textLine.substr(found2 + 2, found3 - found2 - 3);
+	stringstream convert(maxHours);
+	convert >> driver1.maxHours;
+	string maxWeekWorkingTime = textLine.substr(found3 + 2, found4 - found3 - 3);
+	stringstream convert(maxWeekWorkingTime);
+	convert >> driver1.maxWeekWorkingTime;
+	string minRestTime = textLine.substr(found4 + 2, textLine.size() - found4 - 2);
+	stringstream convert(minRestTime);
+	convert >> driver1.minRestTime;
 }
 
 //////////////

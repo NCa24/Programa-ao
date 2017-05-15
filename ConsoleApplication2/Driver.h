@@ -18,7 +18,6 @@ class Driver{
   unsigned int minRestTime;     // minimum number of rest hours between shifts
   vector<Shift> shifts;         // assigned shifts
  public:
-  Driver(string textLine);
   // get methods
   unsigned int getId() const;
   string getName() const;
@@ -28,5 +27,5 @@ class Driver{
   vector<Shift> getShifts() const;
 
   // outher methods
-
+  int Driver::split_driver(string textLine)
 };

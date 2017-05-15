@@ -134,5 +134,3 @@ int Line::changeTime(string parag1, string parag2, int new_time)
 	}
 	return 1;
 }
-
-casdasd
