@@ -15,7 +15,6 @@ class Shift{
   unsigned int endTime;   
 
  public:
-  Shift(unsigned int busLineId, unsigned int driverId, unsigned int busNumber, unsigned int startTime, unsigned int endTime);
   // get methdos
   unsigned int getBusLineId() const; //funçao com const nao permite alterar valores de variaveis da classe
   unsigned int getDriverId() const;

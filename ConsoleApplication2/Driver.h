@@ -25,7 +25,6 @@ class Driver{
   unsigned int getShiftMaxDuration() const;
   unsigned int getMaxWeekWorkingTime() const;
   unsigned int getMinRestTime() const;
-  vector<Shift> getShifts() const;
 
   // outher methods
   int split_driver(string textLine);

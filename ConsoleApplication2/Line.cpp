@@ -33,9 +33,10 @@ int Line::iterative_Line(string textLine) {
 	{
 		if (found5 == (textLine.size() - 1))
 		{
-			stringstream convert(textLine.substr(found3 + 2, textLine.size() - 1 - found3 - 2));
+			stringstream convert(textLine.substr(found3 + 2, textLine.size() - 1 - found3 - 1));
 			convert >> aux;
 			Linha.timesList.push_back(aux);
+			break;
 		}
 		else
 		{
@@ -44,6 +45,8 @@ int Line::iterative_Line(string textLine) {
 			Linha.timesList.push_back(aux);
 			found3 = found5;
 			found5 = textLine.find(",", found5 + 1);
+			if (found5 > textLine.size())
+			found5 = textLine.size() - 1;
 		}
 	}
 
@@ -52,11 +55,13 @@ int Line::iterative_Line(string textLine) {
 	int i = 0;
 	int j = 0;
 	int k = 0;
-	while (i < (busStopList.size() - 1))
+	pair <pair<string, string>, int> aux2;
+	while (i < (Linha.busStopList.size() - 1))
 	{
-		Linha.tempo_viagem[k].first.first = busStopList[i];
-		Linha.tempo_viagem[k].first.second = busStopList[i + 1];
-		Linha.tempo_viagem[k].second = timesList[j];
+		aux2.first.first = Linha.busStopList[i];
+		aux2.first.second = Linha.busStopList[i + 1];
+		aux2.second = Linha.timesList[j];
+		Linha.tempo_viagem.push_back(aux2);
 		i++;
 		j++;
 		k++;

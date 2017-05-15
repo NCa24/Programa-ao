@@ -46,10 +46,6 @@ unsigned int Driver::getMinRestTime() const{
   return minRestTime;
 }
 
-vector<Shift> Driver::getShifts() const{
-  return shifts;
-}
-
 int Driver::change_ID(int new_ID)
 {
 	driver1.id = new_ID;
