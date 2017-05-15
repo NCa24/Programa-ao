@@ -27,5 +27,11 @@ class Driver{
   vector<Shift> getShifts() const;
 
   // outher methods
-  int Driver::split_driver(string textLine)
+  int split_driver(string textLine);
+  int change_ID(int new_ID);
+  int change_name(string new_name);
+  int change_maxHours(int max_Hours);
+  int change_maxWeekWorkingTime(int maxWeekWorkingTime);
+  int change_minRestTime(int minRestTime);
+
 };

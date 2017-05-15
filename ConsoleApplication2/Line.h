@@ -25,9 +25,9 @@ public:
 	vector<int> getTimings() const;
 	// set methods
 	int changeID(int new_ID);
-	int Line::changeTime(string parag1, string parag2, int new_time);
-	int Line::changeBusStop(string to_change, string new_bus_stop);
-	int Line::changeFreq(int new_freq);
+	int changeTime(string parag1, string parag2, int new_time);
+	int changeBusStop(string to_change, string new_bus_stop);
+	int changeFreq(int new_freq);
 	// other methods
 
 };

@@ -8,6 +8,7 @@ int Empresa::get_line_driver(string nome, string fichCondutores, string fichLinh
 {
 	linhas.push_back(Linha);
 	condutores.push_back(driver1);
+	return 1;
 }
 
 ////////////////////////////////

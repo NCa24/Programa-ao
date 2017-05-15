@@ -2,12 +2,13 @@
 #include "Line.h"
 #include <sstream>
 #include <utility>
+#include <stdlib.h>
 
 using namespace std;
 
-	Line Linha;
+Line Linha;
 
-	int Line::iterative_Line(string textLine) {
+int Line::iterative_Line(string textLine) {
 	size_t found = textLine.find(";");
 	size_t found2 = textLine.find(";", found + 1);
 	size_t found3 = textLine.find(";", found2 + 1);
@@ -15,10 +16,8 @@ using namespace std;
 	size_t found5 = textLine.find(",", found3 + 1); //virgulas nos tempos
 	string ID = textLine.substr(0, found - 1);
 	string FREQ = textLine.substr(found + 2, found2 - found - 3);
-	stringstream convert(FREQ);
-	convert >> Linha.freq;
-	stringstream convert(ID);
-	convert >> Linha.id;
+	Linha.id = atoi (ID.c_str());
+	Linha.freq = atoi(FREQ.c_str());
 	int aux;
 	Linha.busStopList.clear(); //limpar antes de começar a escrever
 	Linha.timesList.clear(); //construtor para todas as linhas
