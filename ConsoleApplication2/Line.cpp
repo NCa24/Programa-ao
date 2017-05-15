@@ -5,10 +5,6 @@
 
 using namespace std;
 
-vector <Line> LinhasExistentes; //vector que contem todas as linhas
-
-							   //Line temporario; //objecto que depois entra em LinhasExistentes
-
 	Line Linha;
 
 	int Line::iterative_Line(string textLine) {
@@ -66,7 +62,6 @@ vector <Line> LinhasExistentes; //vector que contem todas as linhas
 		j++;
 		k++;
 	}
-	LinhasExistentes.push_back(Linha); //LINHA ENTRA NO VECTOR
 	return 1;
 }
 

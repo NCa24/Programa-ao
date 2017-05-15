@@ -2,7 +2,7 @@
 #include "Driver.h"
 #include <sstream>
 
-Driver driver1;
+extern Driver driver1;
 
 int Driver::split_driver(string textLine)
 {

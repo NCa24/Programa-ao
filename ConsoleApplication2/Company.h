@@ -17,7 +17,7 @@ class Empresa{
   vector<Driver> condutores;
   vector<Line> linhas;
  public:
-	 Empresa(string nome, string fichCondutores, string fichLinhas);
+	 int get_line_driver(string nome, string fichCondutores, string fichLinhas);
   // metodos get
   string getNome() const;
   // metodos set
