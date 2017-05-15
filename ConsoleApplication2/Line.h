@@ -3,27 +3,31 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <utility>
 
 
 
 using namespace std;
 
-class Line{
- private:
-  unsigned int id;
-  unsigned int freq;
-  vector<string> busStopList;
-  vector<int> timesList;
-  vector <pair<pair<string, string>, int>> tempo_viagem;
- public:
-  int iterative_Line(string textLine);
-  // metodos get
-  unsigned int getFreq() const;
-  unsigned int getId() const;
-  vector<string> getBusStops() const;
-  vector<int> getTimings() const;
-  // set methods
-  int changeID(int new_ID);
-  // other methods
+class Line {
+private:
+	unsigned int id;
+	unsigned int freq;
+	vector<string> busStopList;
+	vector<int> timesList;
+	vector <pair<pair<string, string>, int>> tempo_viagem;
+public:
+	int iterative_Line(string textLine);
+	// metodos get
+	unsigned int getFreq() const;
+	unsigned int getId() const;
+	vector<string> getBusStops() const;
+	vector<int> getTimings() const;
+	// set methods
+	int changeID(int new_ID);
+	int Line::changeTime(string parag1, string parag2, int new_time);
+	int Line::changeBusStop(string to_change, string new_bus_stop);
+	int Line::changeFreq(int new_freq);
+	// other methods
 
 };

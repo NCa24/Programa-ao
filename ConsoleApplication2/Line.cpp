@@ -5,13 +5,13 @@
 
 using namespace std;
 
-vector <Line> LinhasExistentes //vector que contem todas as linhas
+vector <Line> LinhasExistentes; //vector que contem todas as linhas
 
-//Line temporario; //objecto que depois entra em LinhasExistentes
+							   //Line temporario; //objecto que depois entra em LinhasExistentes
 
-Line Linha
+	Line Linha;
 
-int iterative_Line(string textLine){
+	int Line::iterative_Line(string textLine) {
 	size_t found = textLine.find(";");
 	size_t found2 = textLine.find(";", found + 1);
 	size_t found3 = textLine.find(";", found2 + 1);
@@ -44,7 +44,7 @@ int iterative_Line(string textLine){
 		}
 		else
 		{
-			stringstream convert (textLine.substr(found3 + 2, found5 - found3 - 2));
+			stringstream convert(textLine.substr(found3 + 2, found5 - found3 - 2));
 			convert >> aux;
 			Linha.timesList.push_back(aux);
 			found3 = found5;
@@ -54,42 +54,42 @@ int iterative_Line(string textLine){
 
 	//store tempo entre paragens associado as respectivas paragens
 
-		int i = 0;
-		int j = 0;
-		int k = 0;
-		while (i < (busStopList - 1))
-		{
-			Linha.tempo_viagem[k].first.first = busStopList[i];
-			Linha.tempo_viagem[k].first.second = busStopList[i + 1];
-			Linha.tempo_viagem[k].second = timesList[j];
-			i++;
-			j++;
-			k++;
-		}
-	LinhasExistentes.push_back(Line); //LINHA ENTRA NO VECTOR
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	while (i < (busStopList.size() - 1))
+	{
+		Linha.tempo_viagem[k].first.first = busStopList[i];
+		Linha.tempo_viagem[k].first.second = busStopList[i + 1];
+		Linha.tempo_viagem[k].second = timesList[j];
+		i++;
+		j++;
+		k++;
+	}
+	LinhasExistentes.push_back(Linha); //LINHA ENTRA NO VECTOR
 	return 1;
 }
 
-	// INITIALISATION CODE GOES IN HERE
+// INITIALISATION CODE GOES IN HERE
 
 ////////////////
 // get methods
 ////////////////
 
-unsigned int Line::getId() const{
-  return id;
+unsigned int Line::getId() const {
+	return id;
 }
 
 unsigned int Line::getFreq() const {
 	return id;
 }
 
-vector<string> Line::getBusStops() const{
-  return busStopList;
+vector<string> Line::getBusStops() const {
+	return busStopList;
 }
 
-vector<int> Line::getTimings() const{
-  return timesList;
+vector<int> Line::getTimings() const {
+	return timesList;
 }
 
 
@@ -97,23 +97,23 @@ vector<int> Line::getTimings() const{
 
 int Line::changeID(int new_ID)
 {
-	id = new_ID;
+	Linha.id = new_ID;
 	return 1;
 }
 
 int Line::changeFreq(int new_freq)
 {
-	freq = new_freq;
+	Linha.freq = new_freq;
 	return 1;
 }
 
 int Line::changeBusStop(string to_change, string new_bus_stop)
 {
-	while (int i= 0 < busStopList)
+	while (int i = 0 < Linha.busStopList.size())
 	{
-		if (busStopList[i] == to_change)
+		if (Linha.busStopList[i] == to_change)
 		{
-			busStopList[i] == new_bus_stop;
+			Linha.busStopList[i] == new_bus_stop;
 			break;
 		}
 	}
@@ -123,15 +123,16 @@ int Line::changeBusStop(string to_change, string new_bus_stop)
 int Line::changeTime(string parag1, string parag2, int new_time)
 {
 	int j = 0;
-		while (j < timesList())
+	while (j < Linha.tempo_viagem.size())
+	{
+		if ((Linha.tempo_viagem[j].first.first == parag1 && Linha.tempo_viagem[j].first.second == parag2) || (Linha.tempo_viagem[j].first.first == parag2 && Linha.tempo_viagem[j].first.second == parag1))
 		{
-			if ((timesList[j].first.first == parag1 && timesList[j].first.second == parag2) || (timesList[j].first.first == parag2 && timesList[j].first.second == parag1))
-				{
-				timesList[j].second = new_time;
-				break;
-				}
-			j++;
+			Linha.tempo_viagem[j].second = new_time;
+			break;
 		}
-		return 1;
+		j++;
+	}
+	return 1;
 }
 
+casdasd
