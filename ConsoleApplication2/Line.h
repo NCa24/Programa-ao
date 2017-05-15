@@ -14,6 +14,7 @@ class Line{
   unsigned int freq;
   vector<string> busStopList;
   vector<int> timesList;
+  vector <pair<pair<string, string>, string>> tempo_viagem;
  public:
   Line(string textLine);
   // metodos get
@@ -22,7 +23,7 @@ class Line{
   vector<string> getBusStops() const;
   vector<int> getTimings() const;
   // set methods
-  int changeID();
+  int changeID(int new_ID);
   // other methods
 
 };
