@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Line.h"
+#include <iostream>
+#include <fstream>
 #include <sstream>
 #include <utility>
 #include <stdlib.h>
@@ -80,7 +82,7 @@ unsigned int Line::getId() const {
 }
 
 unsigned int Line::getFreq() const {
-	return id;
+	return freq;
 }
 
 vector<string> Line::getBusStops() const {
@@ -132,4 +134,70 @@ int Line::changeTime(string parag1, string parag2, int new_time)
 		j++;
 	}
 	return 1;
+}
+
+
+void Line::setId(int id) {
+	this->id = id;
+}
+void Line::setFreq(int freq) {
+	this->freq = freq;
+}
+
+void Line::setBusStops(vector<string> busStopList) {
+	this->busStopList = busStopList;
+}
+
+void Line::setTimesList(vector<int> timesList) {
+	this->timesList = timesList;
+}
+
+void Line::setTempoViagens(vector <pair<pair<string, string>, int>> tempo_viagem) {
+
+	this->tempo_viagem = tempo_viagem;
+}
+
+void Line::createLine()
+{
+
+	Linha.busStopList.clear(); //limpar antes de começar a escrever
+	Linha.timesList.clear(); //construtor para todas as linhas
+	Linha.tempo_viagem.clear();
+	string perguntasLinha[4] = {
+		"inserir número identificador único ",
+		"inserir frequência de circulação dos autocarros na linha (em minutos)",
+		"inserir lista com a sequência das paragens que a constituem. quando nao quiser inserir mais paragens escreva 'end'  ",
+		"inserir lista com os tempos (em minutos) de viagem entre paragens. quando tiver inserido todos os tempos escreva 'end' "
+	};
+
+	fstream file("ficheiro de linhas.txt", ios::app);
+	cin.ignore();
+	cout << perguntasLinha[0] << endl;
+	int var;
+	cin >> var;
+	Linha.setId(var);
+	cout << perguntasLinha[1] << endl;
+	cin >> var;
+	Linha.setFreq(var);
+	cout << perguntasLinha[2] << endl;
+	cin.ignore();
+	string var2;
+	while (var2 != "end")
+	{
+		cout << "inserir paragem" << endl;
+		getline(cin, var2);
+		if (var2 == "end")
+			break;
+		Linha.busStopList.push_back(var2);
+	}
+	string var3;
+	do
+	{
+		cout << "inserir tempo" << endl;
+		getline(cin, var3);
+		if (var3 == "end")
+			break;
+		var = atoi(var3.c_str());
+		Linha.timesList.push_back(var);
+	} while (var3 != "end");
 }

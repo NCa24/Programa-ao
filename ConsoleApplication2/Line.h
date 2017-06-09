@@ -29,5 +29,11 @@ public:
 	int changeBusStop(string to_change, string new_bus_stop);
 	int changeFreq(int new_freq);
 	// other methods
+	void setId(int);
+	void setFreq(int);
+	void setBusStops(vector<string>);
+	void setTimesList(vector<int>);
+	void setTempoViagens(vector <pair<pair<string, string>, int>>);
+	void createLine();
 
 };

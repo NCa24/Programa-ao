@@ -25,7 +25,8 @@ class Empresa{
   // metodos get
   string getNome() const;
   // metodos set
+  int Empresa::remove_line(int i);
   // outros metodos
   void distribuiServico(); // funcao que implementa a afectacao de servico
-  void get_linhas();
+  vector<Line> get_linhas();
 };
